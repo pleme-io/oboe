@@ -1,0 +1,29 @@
+[package]
+name = "oboe"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Adaptive DNS posture orchestrator — probes upstreams, steers the macOS system resolver chain based on health."
+
+[[bin]]
+name = "oboe"
+path = "src/main.rs"
+
+[dependencies]
+oboe-types = { path = "../oboe-types" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+clap = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+hickory-resolver = { workspace = true }
+nix = { workspace = true }
+
+[lints]
+workspace = true
