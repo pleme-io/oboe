@@ -4,4 +4,3 @@ result-*
 .direnv/
 .envrc.local
 *.log
-Cargo.build-spec.json
