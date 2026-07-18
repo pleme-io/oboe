@@ -8,5 +8,16 @@
   outputs = { substrate, ... }: substrate.rust.workspace {
     src = ./.;
     member = "oboe";
+    # Restore the module-trio spec the bare substrate.rust.workspace shape dropped
+    # (43cb04a) — the builder synthesizes homeManagerModules/nixosModules/darwinModules
+    # .default AND overlays.default (defaulting services.oboe.package = pkgs.oboe) from
+    # this spec. The fleet consumes both: nix/darwinConfigurations (darwinModules) and
+    # nix/parts/overlays.nix (overlays.default). Exact pre-conversion spec.
+    module = {
+      description = "oboe (覚え) — adaptive DNS posture orchestrator";
+      hmNamespace = "blackmatter.components";
+      withUserDaemon = false; # System-level, not per-user.
+      withShikumiConfig = false;
+    };
   };
 }
